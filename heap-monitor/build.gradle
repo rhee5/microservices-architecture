@@ -1,0 +1,52 @@
+plugins {
+    id "java"
+    // added for spring framework
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group "com.fenics.monitor"
+archivesBaseName = "heap-monitor"
+version "${version}"
+
+sourceCompatibility = 8
+targetCompatibility = 8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    testImplementation 'junit:junit:4.13.2' // JUnit dependency for testing
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${jUnitVersion}"
+    testRuntimeOnly    "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
+
+    // added for spring framework
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // for loggging
+    implementation 'ch.qos.logback:logback-classic:1.2.6'
+    testImplementation "ch.qos.logback:logback-classic:${logbackVersion}"
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'com.fenics.monitor.MemoryMonitoringService')
+    }
+    enabled=true
+}
+
+bootJar {
+    enabled = false
+}
