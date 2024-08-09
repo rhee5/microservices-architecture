@@ -32,8 +32,8 @@ spring:
   datasource:
     url: "jdbc:sqlserver://localhost\\FENICS:1433;databaseName=daylights;encrypt=true;trustServerCertificate=true"
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    username: sa
-    password: db_fentp4o
+    username: 
+    password: 
 
   jmx:
     enabled: true
