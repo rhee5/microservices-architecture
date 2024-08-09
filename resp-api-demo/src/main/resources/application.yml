@@ -8,11 +8,11 @@ spring:
       ssl.endpoint.identification.algorithm: ""
     ssl:
       protocol: "SSL"
-      keyStoreLocation: "file:///C:/Program Files (x86)/FENICS/Pro3.1/fenics-enterprise/services/kafka/keystore/kafka.keystore.jks"
-      keyStorePassword: "fen_kafka2018"
-      trustStoreLocation: "file:///C:/Program Files (x86)/FENICS/Pro3.1/fenics-enterprise/services/kafka/keystore/kafka.truststore.jks"
-      trustStorePassword: "fen_kafka2018"
-      keyPassword: "fen_kafka2018"
+      keyStoreLocation: "file:///C:/ ... / location of kafka.keystore.jks"
+      keyStorePassword: "put it here"
+      trustStoreLocation: "file:///C:/ ... / location of kafka.truststore.jks"
+      trustStorePassword: "put it here"
+      keyPassword: "put it here"
     consumer:
       auto-offset-reset: earliest
       group-id: dosomething
