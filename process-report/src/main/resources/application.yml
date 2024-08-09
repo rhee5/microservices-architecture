@@ -1,0 +1,43 @@
+spring:
+  kafka:
+#    listener.concurrency: 8 # only if you want multiple of these microservices running
+    bootstrap-servers: localhost:9093
+    properties:
+      security.protocol: "SSL"
+      ssl.endpoint.identification.algorithm: ""
+    ssl:
+      keyStoreLocation: "file:///C:/Program Files (x86)/FENICS/Pro3.1/fenics-enterprise/services/kafka/keystore/kafka.keystore.jks"
+      keyStorePassword: "fen_kafka2018"
+      trustStoreLocation: "file:///C:/Program Files (x86)/FENICS/Pro3.1/fenics-enterprise/services/kafka/keystore/kafka.truststore.jks"
+      trustStorePassword: "fen_kafka2018"
+      keyPassword: "fen_kafka2018"
+    consumer:
+      auto-offset-reset: earliest
+      group-id: report
+      bootstrap-servers: localhost:9093 # necessary
+    producer:
+      bootstrap-servers: localhost:9093
+      max-request-size: 3145728
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  jpa:
+    properties.hibernate:
+      dialect: org.hibernate.dialect.SQLServerDialect
+      format_sql: true
+    show-sql: true
+    hibernate.naming.physical-strategy=org: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  datasource:
+    url: "jdbc:sqlserver://localhost\\FENICS:1433;databaseName=daylights;encrypt=true;trustServerCertificate=true"
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: db_fentp4o
+
+server:
+  port: 8082
+
+#logging:
+#  level:
+#    org.springframework.kafka: DEBUG
